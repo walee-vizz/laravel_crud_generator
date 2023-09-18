@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GenerateCrudController;
+use App\Http\Controllers\ActivityLogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,6 @@ Route::post('generate-crud', [GenerateCrudController::class, 'generateCrudComman
 
 
 
-use App\Http\Controllers\ActivityLogController;
 Route::controller(ActivityLogController::class)->prefix('activity-log')->name('activity_log.')->group(function(){
             Route::get('/', 'index');
             Route::post('/store', 'store');
@@ -33,14 +33,15 @@ Route::controller(ActivityLogController::class)->prefix('activity-log')->name('a
         });
 
 
-use App\Http\Controllers\AdminSettingController;
-Route::controller(AdminSettingController::class)->prefix('setting')->name('setting.')->group(function(){
+
+
+
+
+use App\Http\Controllers\WilmaElliController;
+Route::controller(WilmaElliController::class)->prefix('wilma-elli')->name('wilma_elli.')->group(function(){
             Route::get('/', 'index');
             Route::post('/store', 'store');
-            Route::post('/update/{setting}', 'update');
-            Route::get('/destroy/{setting}', 'destroy');
+            Route::post('/update/{wilma_elli}', 'update');
+            Route::get('/destroy/{wilma_elli}', 'destroy');
 
         });
-
-
-

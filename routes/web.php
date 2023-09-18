@@ -135,4 +135,13 @@ Route::controller(ActivityLogController::class)->prefix('activity-log')->name('a
 
 
 
+use App\Http\Controllers\WilmaElliController;
+Route::controller(WilmaElliController::class)->prefix('wilma-elli')->name('wilma_elli.')->group(function(){
+            Route::get('/', 'index')->middleware('permission:read wilmaellis')->name('index');
+            Route::get('/create', 'create')->middleware('permission:create wilmaellis')->name('create');
+            Route::post('/store', 'store')->middleware('permission:create wilmaellis')->name('store');
+            Route::get('/edit/{wilma_elli}', 'edit')->middleware('permission:edit wilmaellis')->name('edit');
+            Route::post('/update/{wilma_elli}', 'update')->middleware('permission:edit wilmaellis')->name('update');
+            Route::get('/destroy/{wilma_elli}', 'destroy')->middleware('permission:delete wilmaellis')->name('destroy');
 
+        });

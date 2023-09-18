@@ -56,7 +56,9 @@ class GenerateCrud extends Command
         // Generate the link using the generateLink() method
         // $link = $this->generateLink($modelName);
         // Create the link HTML for the sidebar
-        $linkHtml = '<li class="nav-item"><a class="nav-link" href="' . route('home') . '/' . strtolower(str_replace('_', '-', $modelName)) . '"><i class="fas fa-fw fa-chart-area"></i><span>' . Str::plural(str_replace('_', ' ', $modelName)) . '</span></a></li>';
+        $linkHtml = '@can(read ' . Str::plural(str_replace('_', ' ', strtolower($modelName))) . ')<li class="nav-item"><a class="nav-link" href="' . route('home') . '/' . strtolower(str_replace('_', '-', $modelName)) . '">
+        <i class="fas fa-fw fa-chart-area"></i><span>' . Str::plural(str_replace('_', ' ', $modelName)) . '</span></a>
+        </li> @endcan';
 
 
         // Call the method to add the link to the sidebar at a specific location
@@ -515,12 +517,12 @@ class GenerateCrud extends Command
         $apiphpContent = File::get($apiphpPath);
         $modelname = strtolower($modelName);
         $routes .= "Route::controller(" . str_replace('_', '', $modelName) . "Controller::class)->prefix('" . str_replace('_', '-', $modelname) . "')->name('$modelname.')->group(function(){
-            Route::get('/', 'index')->middleware('permission:read ".Str::replace('_','',Str::plural($modelname))."')->name('index');
-            Route::get('/create', 'create')->middleware('permission:create ".Str::replace('_','',Str::plural($modelname))."')->name('create');
-            Route::post('/store', 'store')->middleware('permission:create ".Str::replace('_','',Str::plural($modelname))."')->name('store');
-            Route::get('/edit/{" . $modelname . "}', 'edit')->middleware('permission:edit ".Str::replace('_','',Str::plural($modelname))."')->name('edit');
-            Route::post('/update/{" . $modelname . "}', 'update')->middleware('permission:edit ".Str::replace('_','',Str::plural($modelname))."')->name('update');
-            Route::get('/destroy/{" . $modelname . "}', 'destroy')->middleware('permission:delete ".Str::replace('_','',Str::plural($modelname))."')->name('destroy');
+            Route::get('/', 'index')->middleware('permission:read ".Str::replace('_',' ',Str::plural($modelname))."')->name('index');
+            Route::get('/create', 'create')->middleware('permission:create ".Str::replace('_',' ',Str::plural($modelname))."')->name('create');
+            Route::post('/store', 'store')->middleware('permission:create ".Str::replace('_',' ',Str::plural($modelname))."')->name('store');
+            Route::get('/edit/{" . $modelname . "}', 'edit')->middleware('permission:edit ".Str::replace('_',' ',Str::plural($modelname))."')->name('edit');
+            Route::post('/update/{" . $modelname . "}', 'update')->middleware('permission:edit ".Str::replace('_',' ',Str::plural($modelname))."')->name('update');
+            Route::get('/destroy/{" . $modelname . "}', 'destroy')->middleware('permission:delete ".Str::replace('_',' ',Str::plural($modelname))."')->name('destroy');
 
         });";
         $apiroutes .= "Route::controller(" . str_replace('_', '', $modelName) . "Controller::class)->prefix('" . str_replace('_', '-', $modelname) . "')->name('$modelname.')->group(function(){

@@ -118,8 +118,7 @@
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
             </div>
         </li>
-        {{-- <li>
-            <ul class="za-nav-list"> --}}
+
         <li class="za-nav-list py-2">
             <div id="google_translate_element1" style="padding: 1em; display: none !important">
             </div>
@@ -176,28 +175,7 @@
                 </li>
             </ul>
         </li>
-        {{-- </ul>
-        </li> --}}
-        {{-- <li>
-            <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session()->get('locale') }}</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="langDropdown">
 
-                @if (session()->get('locale') == 'en')
-                    <a class="dropdown-item" href="{{ route('changeLang', ['lang' => 'ar']) }}">
-                        {{ trans('Arabic') }}
-                    </a>
-                @else
-                    <a class="dropdown-item" href="{{ route('changeLang', ['lang' => 'en']) }}">
-                        {{ trans('English') }}
-                    </a>
-                @endif
-
-
-            </div>
-        </li> --}}
 
         <div class="topbar-divider d-none d-sm-block">
 
