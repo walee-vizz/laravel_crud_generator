@@ -67,7 +67,7 @@ Route::get('test-prefix', function(){
 Route::prefix(request()->get('dynamic_prefix', ''))->name('admin.')->middleware(Authenticate::class)->group(function () {
 
     Route::controller(AdminDashboardController::class)->group(function () {
-        Route::get('/', 'index')->name('dashboard');
+        Route::get('/dashboard', 'index')->name('dashboard');
     });
 
     Route::controller(RoleController::class)->middleware('permission:manage roles and permissions')->group(function () {
@@ -131,4 +131,8 @@ Route::controller(ActivityLogController::class)->prefix('activity-log')->name('a
     Route::post('/update/{activity_log}', 'update')->name('update');
     Route::get('/destroy/{activity_log}', 'destroy')->name('destroy');
 });
+
+
+
+
 

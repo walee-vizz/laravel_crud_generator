@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Spatie\Permission\Models\Permission;
 
 class GenerateCrud extends Command
 {
@@ -50,7 +51,7 @@ class GenerateCrud extends Command
         if ($create_views) {
             $this->generateViews($modelName, $fields, $parsedFields, $view_path);
         }
-
+        $this->makePermissions($modelName);
         $this->appendRoutes($modelName);
         // Generate the link using the generateLink() method
         // $link = $this->generateLink($modelName);
@@ -514,12 +515,12 @@ class GenerateCrud extends Command
         $apiphpContent = File::get($apiphpPath);
         $modelname = strtolower($modelName);
         $routes .= "Route::controller(" . str_replace('_', '', $modelName) . "Controller::class)->prefix('" . str_replace('_', '-', $modelname) . "')->name('$modelname.')->group(function(){
-            Route::get('/', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('/store', 'store')->name('store');
-            Route::get('/edit/{" . $modelname . "}', 'edit')->name('edit');
-            Route::post('/update/{" . $modelname . "}', 'update')->name('update');
-            Route::get('/destroy/{" . $modelname . "}', 'destroy')->name('destroy');
+            Route::get('/', 'index')->middleware('permission:read ".Str::replace('_','',Str::plural($modelname))."')->name('index');
+            Route::get('/create', 'create')->middleware('permission:create ".Str::replace('_','',Str::plural($modelname))."')->name('create');
+            Route::post('/store', 'store')->middleware('permission:create ".Str::replace('_','',Str::plural($modelname))."')->name('store');
+            Route::get('/edit/{" . $modelname . "}', 'edit')->middleware('permission:edit ".Str::replace('_','',Str::plural($modelname))."')->name('edit');
+            Route::post('/update/{" . $modelname . "}', 'update')->middleware('permission:edit ".Str::replace('_','',Str::plural($modelname))."')->name('update');
+            Route::get('/destroy/{" . $modelname . "}', 'destroy')->middleware('permission:delete ".Str::replace('_','',Str::plural($modelname))."')->name('destroy');
 
         });";
         $apiroutes .= "Route::controller(" . str_replace('_', '', $modelName) . "Controller::class)->prefix('" . str_replace('_', '-', $modelname) . "')->name('$modelname.')->group(function(){
@@ -534,5 +535,23 @@ class GenerateCrud extends Command
         File::append($webphpPath, "\n" . $class . "\n" . $routes . "\n");
 
         File::append($apiphpPath, "\n" . $class . "\n" . $apiroutes . "\n");
+    }
+
+    private function makePermissions($modelName)
+    {
+
+        $model_name = Str::replace('_','',Str::plural(Str::lower($modelName)));
+        $data = [
+            'read ' . $model_name,
+            'create ' . $model_name,
+            'edit ' . $model_name,
+            'delete ' . $model_name,
+        ];
+
+        foreach ($data as $item) {
+            Permission::create(['name' => $item, 'guard_name' => 'web']);
+        }
+
+        return true;
     }
 }

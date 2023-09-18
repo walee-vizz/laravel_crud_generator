@@ -68,7 +68,7 @@
                         <div class="small text-gray-500">December12,
                             2019</div>
                         <span class="font-weight-bold"> A new monthly
-                           report is ready to
+                            report is ready to
                             download!</span>
                     </div>
                 </a>
@@ -120,65 +120,63 @@
         </li>
         {{-- <li>
             <ul class="za-nav-list"> --}}
-                <li class="za-nav-list py-2">
-                    <div id="google_translate_element1" style="padding: 1em; display: none !important">
-                    </div>
-                    <img class="selected-flag" data-src="{{ asset('flags/us-flag.png') }}"
-                        alt="" id="selected-flag" data-lang="English" data-lang-code="en" loading="lazy" /><i
-                        class="ml-2 fas fa-chevron-down"></i>
-                    <ul class="za-nav-dropdown">
-                        <li>
-                            <img class="flags default"
-                                src="{{ asset('flags/us-flag.png') }}" alt=""
-                                data-lang-code="en" data-lang="English" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/china-flag.png') }}"
-                                alt="" data-lang-code="cn" data-lang="Chinese" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/ger-flag.png') }}"
-                                alt="" data-lang-code="de" data-lang="German" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/ita-flag.png') }}"
-                                alt="" data-lang-code="it" data-lang="Italian" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/nl-flag.png') }}"
-                                alt="" data-lang-code="nl" data-lang="Dutch" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/in.svg') }}"
-                                alt="" data-lang-code="hi" data-lang="Hindi" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/in.svg') }}"
-                                alt="" data-lang-code="in" data-lang="Tamil" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/jp.svg') }}"
-                                alt="" data-lang-code="jp" data-lang="Japanese" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/sp.svg') }}"
-                                alt="" data-lang-code="es" data-lang="Spanish" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/id.svg') }}"
-                                alt="" data-lang-code="id" data-lang="Indonesian" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/ar.svg') }}"
-                                alt="" data-lang-code="ar" data-lang="Arabic" />
-                        </li>
-                        <li>
-                            <img class="flags" src="{{ asset('flags/phil.svg') }}"
-                                alt="" data-lang-code="tl" data-lang="Filipino" />
-                        </li>
-                    </ul>
+        <li class="za-nav-list py-2">
+            <div id="google_translate_element1" style="padding: 1em; display: none !important">
+            </div>
+            <img class="selected-flag" data-src="{{ asset('flags/us-flag.png') }}" alt="" id="selected-flag"
+                data-lang="English" data-lang-code="en" loading="lazy" /><i class="ml-2 fas fa-chevron-down"></i>
+            <ul class="za-nav-dropdown">
+                <li>
+                    <img class="flags default" src="{{ asset('flags/us-flag.png') }}" alt="" data-lang-code="en"
+                        data-lang="English" />
                 </li>
-            {{-- </ul>
+                <li>
+                    <img class="flags" src="{{ asset('flags/china-flag.png') }}" alt="" data-lang-code="cn"
+                        data-lang="Chinese" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/ger-flag.png') }}" alt="" data-lang-code="de"
+                        data-lang="German" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/ita-flag.png') }}" alt="" data-lang-code="it"
+                        data-lang="Italian" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/nl-flag.png') }}" alt="" data-lang-code="nl"
+                        data-lang="Dutch" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/in.svg') }}" alt="" data-lang-code="hi"
+                        data-lang="Hindi" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/in.svg') }}" alt="" data-lang-code="in"
+                        data-lang="Tamil" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/jp.svg') }}" alt="" data-lang-code="jp"
+                        data-lang="Japanese" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/sp.svg') }}" alt="" data-lang-code="es"
+                        data-lang="Spanish" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/id.svg') }}" alt="" data-lang-code="id"
+                        data-lang="Indonesian" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/ar.svg') }}" alt="" data-lang-code="ar"
+                        data-lang="Arabic" />
+                </li>
+                <li>
+                    <img class="flags" src="{{ asset('flags/phil.svg') }}" alt="" data-lang-code="tl"
+                        data-lang="Filipino" />
+                </li>
+            </ul>
+        </li>
+        {{-- </ul>
         </li> --}}
         {{-- <li>
             <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
@@ -219,14 +217,18 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
+
+
                 <a class="dropdown-item" href="{{ route('admin.settings.index') }}">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
+                    Super Admin Settings
                 </a>
-                <a class="dropdown-item" href="{{ route('activity_log.index') }}">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                </a>
+                @can('view activity logs')
+                    <a class="dropdown-item" href="{{ route('activity_log.index') }}">
+                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Activity Logs
+                    </a>
+                @endcan
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

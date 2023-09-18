@@ -33,11 +33,14 @@ Route::controller(ActivityLogController::class)->prefix('activity-log')->name('a
         });
 
 
-use App\Http\Controllers\SettingController;
-Route::controller(SettingController::class)->prefix('setting')->name('setting.')->group(function(){
+use App\Http\Controllers\AdminSettingController;
+Route::controller(AdminSettingController::class)->prefix('setting')->name('setting.')->group(function(){
             Route::get('/', 'index');
             Route::post('/store', 'store');
             Route::post('/update/{setting}', 'update');
             Route::get('/destroy/{setting}', 'destroy');
 
         });
+
+
+
