@@ -17,7 +17,7 @@ use App\Http\Controllers\GenerateCrudController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ActivityLogController;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\AdminSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,13 +55,6 @@ Route::controller(AuthController::class)->middleware(RedirectIfAuthenticated::cl
 });
 
 // End Auth Routes::
-
-
-
-
-Route::get('/profile', function () {
-    return view('backend.users.profile');
-})->name('profile');
 
 
 Route::get('test-prefix', function(){
@@ -112,7 +105,7 @@ Route::prefix(request()->get('dynamic_prefix', ''))->name('admin.')->middleware(
         Route::post('generate-crud', 'generateCrudCommand')->name('generate_crud.submit');
         Route::get('crud-generation-success', 'crud_generation_success')->name('crud_generation_success');
     });
-    Route::controller(SettingController::class)->prefix('settings')->name('settings.')->group(function () {
+    Route::controller(AdminSettingController::class)->prefix('settings')->name('settings.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/store', 'store')->name('save');
     });

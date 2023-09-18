@@ -40,11 +40,11 @@
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <div class="position-relative">
                         @if($user->picture)
-                        <img class="rounded-circle mt-5" id="profile_picture_show" width="150px"
+                        <img class="rounded-circle mt-5" id="profile_picture_show" style="width:150px; height: 171px;"
                         src="{{ asset($user->picture) }}">
                         @else
 
-                        <img class="rounded-circle mt-5" id="profile_picture_show" width="150px"
+                        <img class="rounded-circle mt-5" id="profile_picture_show"  style="width:150px; height: 171px;"
                             src="{{ asset('user_icon.jpg') }}">
                         @endif
                         <button href="#" id="" class="edit-profile-img-button"><i class="far fa-edit"></i>

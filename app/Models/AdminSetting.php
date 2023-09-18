@@ -4,17 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Setting extends Model
+class AdminSetting extends Model
 {
 
-    protected $table = 'settings';
+    protected $table = 'admin_settings';
 
     protected $fillable = [
-        'title',
-        'user_id',
-        'google_two_fa_status',
-        'google_two_fa_secret',
-        'google_two_fa_qr_url',
         'mail_host',
         'mail_port',
         'mail_username',
@@ -35,9 +30,6 @@ class Setting extends Model
         'google_client_redirect_uri',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+
     // Define relationships and other methods related to the model
 }

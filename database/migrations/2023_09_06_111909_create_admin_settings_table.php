@@ -15,13 +15,9 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('admin_settings', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->boolean('google_two_fa_status')->default(0)->nullable();
-            $table->string('google_two_fa_secret')->nullable();
-            $table->text('google_two_fa_qr_url')->nullable();
             $table->string('mail_mailer')->default('smtp')->nullable();
             $table->string('mail_host')->nullable();
             $table->string('mail_port')->nullable();
