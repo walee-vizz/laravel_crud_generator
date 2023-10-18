@@ -350,7 +350,6 @@
 
                         </div> --}}
                 @yield('admin-content')
-
                 <!-- /.container-fluid -->
 
 

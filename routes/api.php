@@ -34,14 +34,3 @@ Route::controller(ActivityLogController::class)->prefix('activity-log')->name('a
 
 
 
-
-
-
-use App\Http\Controllers\WilmaElliController;
-Route::controller(WilmaElliController::class)->prefix('wilma-elli')->name('wilma_elli.')->group(function(){
-            Route::get('/', 'index');
-            Route::post('/store', 'store');
-            Route::post('/update/{wilma_elli}', 'update');
-            Route::get('/destroy/{wilma_elli}', 'destroy');
-
-        });
